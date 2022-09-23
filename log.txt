@@ -1,0 +1,46 @@
+
+https://wiki.cal-net.nl/display/CALNET3/Installatie+OpenStreetMap+server+en+mapcache
+
+https://openbasiskaart.readthedocs.io/en/latest/mapnik-toolchain.html
+https://www.volkerschatz.com/net/osm/canonicalosm.html
+renderd: https://www.volkerschatz.com/net/osm/renderd.html
+tilecache:
+modtile:
+ https://switch2osm.org/serving-tiles/manually-building-a-tile-server-debian-11/
+https://switch2osm.org/serving-tiles/using-a-docker-container/
+
+-- imposm vs osm2pgsl
+https://ttomasz.github.io/2022-04-08/osm-import-data-with-imposm
+
+-- osm2pgsql FLEX ... EN QGIS
+https://blog.rustprooflabs.com/2020/01/postgis-openstreetmap-flex-structure
+https://osm2pgsql.org/doc/manual.html#the-flex-output
+--?? of kunnen we dat gebruiken om gewoon zelf tables of views aan te maken ???
+
+
+DONE
+====
+
+netherlands-latest.osm.pbf downloaden bij geofabrik
+
+# zorgen dat je de openstreetmap cart (styling hebt)
+git clone https://github.com/gravitystorm/openstreetmap-carto
+
+# inlezen van de data in MET de openstreetmap carto meuk erbij: https://switch2osm.org/serving-tiles/manually-building-a-tile-server-debian-11/
+osm2pgsql -H localhost -U geo -W -d osm --create --slim  -G --hstore --tag-transform-script ~/git/openstreetmap-carto/openstreetmap-carto.lua -C 2500 --number-processes 1 -S ~/git/openstreetmap-carto/openstreetmap-carto.style netherlands-latest.osm.pbf
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
